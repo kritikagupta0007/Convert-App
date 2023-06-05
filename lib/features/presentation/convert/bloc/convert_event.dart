@@ -14,6 +14,12 @@ class GetCoinInfoEvent extends ConvertEvent {
   GetCoinInfoEvent({this.coinInfoData});
 }
 
+class UpdateCoinInfoEvent extends ConvertEvent {
+  final List<CryptoCoinDetail>? coinInfoData;
+
+  UpdateCoinInfoEvent({this.coinInfoData});
+}
+
 class ConversionTextChangedEvent extends ConvertEvent {
   final double value;
 

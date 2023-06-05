@@ -1,4 +1,9 @@
+import 'package:convert_app/features/presentation/profile/bloc/profile_bloc.dart';
+import 'package:convert_app/features/presentation/profile/bloc/profile_event.dart';
+import 'package:convert_app/features/presentation/profile/page/profile_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class TopIcon extends StatelessWidget {
   const TopIcon({super.key});
@@ -8,7 +13,13 @@ class TopIcon extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        _buildIcon(Icons.person_outlined),
+        GestureDetector(
+            onTap: () {
+              context.read<ProfileBloc>().add(GetUserNameEvent());
+              // ProfilePage.navigate(context: context);
+              context.pushNamed('profile');
+            },
+            child: _buildIcon(Icons.person_outlined)),
         _buildIcon(Icons.info_outline_rounded),
       ],
     );

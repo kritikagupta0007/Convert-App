@@ -4,9 +4,9 @@ import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter_svg/flutter_svg.dart';
 
 class CoinListWidget extends StatelessWidget {
-  final CryptoCoinDetail? coin;
+  final CryptoCoinDetail coin;
   final Function(CryptoCoinDetail) onTap;
-  CoinListWidget({this.coin, required this.onTap, super.key});
+  const CoinListWidget({required this.coin, required this.onTap, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class CoinListWidget extends StatelessWidget {
       child: InkWell(
         onTap: () {
           print(coin);
-          onTap(coin!);
+          onTap(coin);
         },
         child: Row(
           children: [
@@ -24,11 +24,10 @@ class CoinListWidget extends StatelessWidget {
               width: 40,
               height: 40,
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(50),
-                child: kIsWeb
-                    ? Image.network(coin!.icon)
-                    : SvgPicture.network(coin!.icon),
-              ),
+                  borderRadius: BorderRadius.circular(50),
+                  child: CircleAvatar(
+                    child: Text(coin.name[0]),
+                  )),
             ),
             const SizedBox(
               width: 10,
@@ -37,16 +36,16 @@ class CoinListWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  coin!.name,
+                  coin.name,
                   style: const TextStyle(
-                    fontSize: 20,
+                    fontSize: kIsWeb ? 16 : 20,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 Text(
-                  coin!.coinSymbol,
+                  coin.coinSymbol,
                   style: const TextStyle(
-                    fontSize: 14,
+                    fontSize: kIsWeb ? 12 : 14,
                     fontWeight: FontWeight.w500,
                   ),
                 )

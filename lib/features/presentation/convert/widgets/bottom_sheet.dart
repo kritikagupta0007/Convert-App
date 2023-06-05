@@ -1,5 +1,6 @@
 import 'package:convert_app/features/data/model/crypto_coin_detail.dart';
 import 'package:convert_app/features/presentation/convert/bloc/convert_bloc.dart';
+import 'package:convert_app/features/presentation/convert/bloc/convert_event.dart';
 import 'package:convert_app/features/presentation/convert/bloc/convert_state.dart';
 import 'package:convert_app/features/presentation/convert/widgets/coin_list.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +15,8 @@ class BottomSheetWidget extends StatelessWidget {
     required this.onTap,
     super.key,
   });
+
+  late TextEditingController controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -44,18 +47,6 @@ class BottomSheetWidget extends StatelessWidget {
                   const SizedBox(
                     height: 20,
                   ),
-                  // ToggleButtons(
-                  //   children: selected,
-                  //   isSelected: _selections,
-                  //   onPressed: (int index) {
-                  //     setState(() {
-                  //       _selections[index] = !_selections[index];
-                  //     });
-                  //   },
-                  // ),
-                  const SizedBox(
-                    height: 20,
-                  ),
                   _buildSearch(),
                   const SizedBox(
                     height: 20,
@@ -69,15 +60,21 @@ class BottomSheetWidget extends StatelessWidget {
                           style: TextStyle(
                               fontSize: 20, fontWeight: FontWeight.bold),
                         ),
-                        ListView.builder(
-                            itemCount: state.coinInfoData.length,
-                            shrinkWrap: true,
-                            itemBuilder: (BuildContext context, index) {
-                              return CoinListWidget(
-                                coin: coinInfoList[index],
-                                onTap: onTap,
-                              );
-                            }),
+                        RefreshIndicator(
+                          onRefresh: () => Future.delayed(Duration(seconds: 1))
+                              .then((_) => context
+                                  .read<ConvertBloc>()
+                                  .add(UpdateCoinInfoEvent())),
+                          child: ListView.builder(
+                              itemCount: state.coinInfoData.length,
+                              shrinkWrap: true,
+                              itemBuilder: (BuildContext context, index) {
+                                return CoinListWidget(
+                                  coin: coinInfoList[index],
+                                  onTap: onTap,
+                                );
+                              }),
+                        ),
                       ]),
                 ]);
           }),
@@ -102,7 +99,8 @@ class BottomSheetWidget extends StatelessWidget {
   Widget _buildSearch() {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
-      child: TextFormField(
+      child: TextField(
+        controller: controller,
         decoration: InputDecoration(
           hintText: 'Search crypto assets',
           focusColor: Colors.black,
@@ -113,7 +111,17 @@ class BottomSheetWidget extends StatelessWidget {
                 width: 1, color: Color.fromARGB(255, 193, 189, 189)),
           ),
         ),
+        onChanged: searchCoin,
       ),
     );
+  }
+
+  void searchCoin(String query) {
+    final suggestions = coinInfoList.where((element) {
+      final coinName = element.name.toLowerCase();
+      final input = query.toLowerCase();
+      print(coinName.contains(input));
+      return coinName.contains(input);
+    }).toList();
   }
 }

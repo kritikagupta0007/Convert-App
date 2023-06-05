@@ -55,5 +55,27 @@
       });
     });
   </script>
+   
+  
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-messaging.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-analytics.js"></script>
+
+ <script>
+  var firebaseConfig = {
+    apiKey: "AIzaSyDHzkGsYIzqOyEIhz9lbypeZx_-3kEnZfg",
+    authDomain: "convert-app-f5b11.firebaseapp.com",
+    projectId: "convert-app-f5b11",
+    storageBucket: "convert-app-f5b11.appspot.com",
+    messagingSenderId: "593059135806",
+    appId: "1:593059135806:web:7fd641a684e805b19dac6f",
+    measurementId: "G-BF5RM6767P"
+  };
+  
+  firebase.initializeApp(firebaseConfig);
+  firebase.getAnalytics(app);
+  firebase.analytics();
+  </script>
+  <script src="main.dart.js" type="application/javascript"></script>
 </body>
 </html>

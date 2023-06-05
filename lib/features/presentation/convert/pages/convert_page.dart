@@ -5,24 +5,26 @@ import 'package:convert_app/features/presentation/convert/bloc/convert_state.dar
 import 'package:convert_app/features/presentation/convert/widgets/from_and_to.dart';
 import 'package:convert_app/features/presentation/convert/widgets/top_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 class ConvertPage extends StatefulWidget {
   const ConvertPage({super.key});
 
-  static Future<void> navigate({
-    required BuildContext context,
-  }) async {
-    await Future.delayed(const Duration(milliseconds: 1500), () {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) {
-          return const ConvertPage();
-        }),
-      );
-    });
-  }
+  // static Future<void> navigate({
+  //   required BuildContext context,
+  // }) async {
+  // await Future.delayed(const Duration(seconds: 0), () {
+  //   Navigator.pushReplacement(
+  //     context,
+  //     MaterialPageRoute(builder: (context) {
+  //       return const ConvertPage();
+  //     }),
+  //   );
+  // });
+  // }
 
   @override
   State<ConvertPage> createState() => _ConvertPageState();
@@ -47,6 +49,7 @@ class _ConvertPageState extends State<ConvertPage>
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
+
     return Scaffold(
       backgroundColor: Colors.grey[100],
       appBar: AppBar(
@@ -54,56 +57,71 @@ class _ConvertPageState extends State<ConvertPage>
         backgroundColor: Colors.grey[100],
         elevation: 0,
       ),
-      body: SingleChildScrollView(child:
-          BlocBuilder<ConvertBloc, ConvertState>(builder: (context, state) {
-        coinInfo = state.coinInfoData;
+      body: RefreshIndicator(
+        onRefresh: () => Future.delayed(Duration(seconds: 1)).then(
+            (_) => context.read<ConvertBloc>().add(UpdateCoinInfoEvent())),
+        child: SingleChildScrollView(child:
+            BlocBuilder<ConvertBloc, ConvertState>(builder: (context, state) {
+          coinInfo = state.coinInfoData;
 
-        if (coinInfo.isNotEmpty) {
-          print(coinInfo[0].icon.toString());
-          return Stack(children: [
-            Column(children: [
-              FromAndToWidget(
-                title: 'From',
-                topMargin: screenSize.height * 0.03,
-                imageURL: coinInfo[0].icon.toString(),
-                available: 'Available: 20.90',
-                coinName: coinInfo[0].name,
-                // 'btc',
-                bottomValue: state.bottomFromValue,
-                coinInfoList: coinInfo,
-                onTap: (item) {
-                  context.read<ConvertBloc>().add(BottomFromValueEvent(item));
-                  Navigator.pop(context);
-                },
+          if (coinInfo.isNotEmpty) {
+            return Stack(children: [
+              Column(children: [
+                FromAndToWidget(
+                  title: 'From',
+                  topMargin: kIsWeb
+                      ? screenSize.height * 0.08
+                      : screenSize.height * 0.03,
+                  imageURL: coinInfo[0].name[0],
+                  available: 'Available: 20.90',
+                  coinName: coinInfo[0].name,
+                  // 'btc',
+                  bottomValue: state.bottomFromValue,
+                  coinInfoList: coinInfo,
+                  onTap: (item) {
+                    context.read<ConvertBloc>().add(BottomFromValueEvent(item));
+                    if (state.bottomFromValue == state.bottomToValue) {
+                      item = coinInfo[0];
+                    }
+                    Navigator.pop(context);
+                  },
+                ),
+                FromAndToWidget(
+                  title: 'To',
+                  coinName: coinInfo[1].name,
+                  // 'eth',
+                  topMargin: screenSize.height * 0.015,
+                  imageURL: coinInfo[1].name[0],
+                  available: 'Available: 89.90',
+                  bottomValue: state.bottomToValue,
+                  coinInfoList: coinInfo,
+                  onTap: (item) {
+                    context.read<ConvertBloc>().add(BottomToValueEvent(item));
+                    Navigator.pop(context);
+                  },
+                ),
+                SizedBox(height: screenSize.height / 6),
+                _buildButton(),
+                SizedBox(height: screenSize.height / 4),
+                Container(),
+              ]),
+              _buildSwapContainer(
+                  context, state.bottomFromValue, state.bottomToValue),
+            ]);
+          } else {
+            return Padding(
+              padding: EdgeInsets.only(top: screenSize.height / 3),
+              child: const Center(
+                child: CircularProgressIndicator(),
               ),
-              FromAndToWidget(
-                title: 'To',
-                coinName: coinInfo[1].name,
-                // 'eth',
-                topMargin: screenSize.height * 0.015,
-                imageURL: coinInfo[1].icon.toString(),
-                available: 'Available: 89.90',
-                bottomValue: state.bottomToValue,
-                coinInfoList: coinInfo,
-                onTap: (item) {
-                  context.read<ConvertBloc>().add(BottomToValueEvent(item));
-                  Navigator.pop(context);
-                },
-              ),
-              SizedBox(
-                height: screenSize.height / 6,
-              ),
-              _buildButton(),
-            ]),
-            _buildSwapContainer(
-                context, state.bottomFromValue, state.bottomToValue),
-          ]);
-        } else {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        }
-      })),
+            );
+          }
+        })),
+      ),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () {},
+      //   child: Icon(Icons.camera),
+      // ),
     );
   }
 
@@ -123,6 +141,10 @@ class _ConvertPageState extends State<ConvertPage>
               _animationController.reverse();
               forward = true;
             }
+            setState(() {
+              toValue = fromValue;
+              fromValue = toValue;
+            });
           },
           child: CircleAvatar(
               backgroundColor: Colors.lightBlue,
@@ -137,7 +159,10 @@ class _ConvertPageState extends State<ConvertPage>
   Widget _buildButton() {
     final screenSize = MediaQuery.of(context).size;
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: screenSize.width / 15),
+      padding: EdgeInsets.symmetric(
+          horizontal: screenSize.width > 720
+              ? screenSize.width / 3
+              : screenSize.width / 15),
       child: ElevatedButton(
           onPressed: () {},
           style: ElevatedButton.styleFrom(
@@ -152,7 +177,7 @@ class _ConvertPageState extends State<ConvertPage>
                 'Preview Conversion',
                 style: TextStyle(
                     color: Colors.black,
-                    fontSize: 20,
+                    fontSize: kIsWeb ? 16 : 18,
                     fontWeight: FontWeight.bold),
               ),
               SizedBox(width: 10),
