@@ -14,13 +14,14 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:url_strategy/url_strategy.dart';
-// import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   if (kIsWeb) setPathUrlStrategy();
+
   await Hive.initFlutter();
   Hive.registerAdapter(CryptoCoinDetailAdapter());
+
   kIsWeb
       ? await Firebase.initializeApp(
           options: const FirebaseOptions(
@@ -35,6 +36,7 @@ void main() async {
       : await Firebase.initializeApp();
   final fcmToken = await FirebaseMessaging.instance.getToken();
   print(" 888 ${fcmToken}");
+
   runApp(const MyApp());
 }
 

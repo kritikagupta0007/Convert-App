@@ -29,6 +29,10 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png"/>
 
+  <link rel="icon" type="image/png" sizes="144*144" href="icons/person.png"/>
+  <link rel="icon" type="image/png" sizes="192*192" href="icons/Icon-192.png"/>
+  <link rel="icon" type="image/png" sizes="192*192" href="icons/Icon-maskable-192.png"/>
+
   <title>convert_app</title>
   <link rel="manifest" href="manifest.json">
 
@@ -55,7 +59,21 @@
       });
     });
   </script>
-   
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register("/firebase-messaging-sw.js");
+        navigator.serviceWorker.register('/service_worker.js').then(function (registration) {
+          // Service Worker registration was successful
+          console.log('Service Worker registered');
+        }, function (error) {
+          // Service Worker registration failed
+          console.log('Service Worker registration failed:', error);
+        });
+      });
+    }
+  </script>
+  
   
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-messaging.js"></script>
@@ -73,9 +91,9 @@
   };
   
   firebase.initializeApp(firebaseConfig);
-  firebase.getAnalytics(app);
+  // firebase.getAnalytics(app);
   firebase.analytics();
   </script>
-  <script src="main.dart.js" type="application/javascript"></script>
+  <!-- <script src="main.dart.js" type="application/javascript"></script> -->
 </body>
 </html>
