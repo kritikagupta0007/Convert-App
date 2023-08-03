@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "593059135806",
+    "project_id": "convert-app-f5b11",
+    "storage_bucket": "convert-app-f5b11.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:593059135806:android:b88fccde066edf509dac6f",
+        "android_client_info": {
+          "package_name": "com.example.convert_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDrQ6e7hMXrLeq3Bxr2yrJZwHEoaQGzBJ4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

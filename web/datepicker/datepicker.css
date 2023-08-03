@@ -1,0 +1,35 @@
+.datepicker-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+}
+
+.datepicker-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.datepicker-inline {
+    display: flex;
+    align-items: center;
+}
+
+.datepicker-inline .fa-calendar {
+    font-size: 30px;
+    margin-right: 10px;
+}
+
+.datepicker-input {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.datepicker-input:focus {
+    outline: none;
+    border-color: dodgerblue;
+}
