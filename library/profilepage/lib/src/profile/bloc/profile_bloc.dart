@@ -5,7 +5,11 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     on<GetUserNameEvent>(
       (event, emit) async {
         SharedPreferences prefs = await SharedPreferences.getInstance();
-        emit(state.copyWith(userName: prefs.getString('name')));
+        String newUserName = prefs.getString('name') ?? "";
+        print('hiii $newUserName');
+        emit(state.copyWith(userName: newUserName));
+        eventBus.fire(UpdateUserNameEvent(newUserName));
+        print(event.userName);
       },
     );
 

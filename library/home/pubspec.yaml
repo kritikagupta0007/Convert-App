@@ -1,7 +1,7 @@
 name: home
 description: A new Flutter package project.
 version: 0.0.1
-homepage:
+homepage: https://github.com/kritikagupta0007/home_page.git
 
 environment:
   sdk: '>=2.19.2 <3.0.0'
@@ -10,50 +10,13 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  convertpage:
-    path: ../convertpage
-  profilepage:
-    path: ../profilepage
 
   cupertino_icons: ^1.0.2
-  modal_bottom_sheet: ^2.1.2
-  flutter_bloc: ^8.1.2
-  dio: ^5.1.2
-  pretty_dio_logger: ^1.3.1
-  retrofit: ^4.0.1
-  http: ^0.13.5
-  responsive_builder: ^0.7.0
-  permission_handler: ^10.2.0
-  get_it: ^7.6.0
-  equatable: ^2.0.5
-  shared_preferences: ^2.1.1
   flutter_svg: ^2.0.5
-  lottie: ^2.3.2
-  flutter_platform_widgets: ^3.3.4
-  hive: ^2.0.4
-  hive_flutter:
-  hive_generator:
-  path_provider: ^2.0.15
-  geolocator:
-  geocoding:
-  universal_html: ^2.2.2
-  url_strategy:
-  go_router: ^7.1.1
-  service_worker: ^0.3.0
-  seo_renderer: ^0.6.0
-  qlevar_router:
-  js:
-  html:
-  flutter_html:
-  bootstrap_flutter: ^1.0.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  retrofit_generator: ^6.0.0+3
-  build_runner: ^2.3.3
-  json_serializable: ^6.6.2
-
   flutter_lints: ^2.0.0
 
 # For information on the generic Dart part of this file, see the

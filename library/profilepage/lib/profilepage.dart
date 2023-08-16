@@ -2,21 +2,20 @@ library profilepage;
 
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:qlevar_router/qlevar_router.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:geocoding/geocoding.dart';
+import 'package:communicationlayer/communicationlayer.dart';
 import 'dart:io';
 import 'package:flutter/foundation.dart' show kIsWeb;
 // import 'package:webview_flutter/webview_flutter.dart';
 // import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'dart:ui' as ui;
 import 'dart:html' as html;
-import 'dart:js' as js;
 
 // import 'package:webview_flutter_android/webview_flutter_android.dart'
 //     if (kIsWeb) 'dart:html' as html;
