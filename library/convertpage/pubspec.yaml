@@ -1,23 +1,22 @@
 name: convertpage
-description: A new Flutter package project.
+description: con
 version: 0.0.1
 homepage:
-publish_to: new
 
 environment:
-  sdk: '>=2.19.2 <3.0.0'
+  sdk: '>=2.19.2 <4.0.0'
   flutter: ">=1.17.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  home:
-    path: ../home
 
-  
   lottie: ^2.3.2
   equatable:
   http: ^0.13.5
+  flutter_bloc: ^8.1.2
+  qlevar_router:
+  flutter_svg: ^2.0.5
   flutter_platform_widgets: ^3.3.4
   hive: ^2.0.4
   hive_flutter: ^1.1.0

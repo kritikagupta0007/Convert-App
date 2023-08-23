@@ -1,10 +1,10 @@
 name: home
-description: A new Flutter package project.
+description: Home page for the Flutter Web POC.
 version: 0.0.1
 homepage: https://github.com/kritikagupta0007/home_page.git
 
 environment:
-  sdk: '>=2.19.2 <3.0.0'
+  sdk: '>=2.19.2 <4.0.0'
   flutter: ">=1.17.0"
 
 dependencies:
