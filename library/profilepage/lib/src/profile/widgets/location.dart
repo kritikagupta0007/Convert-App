@@ -21,7 +21,7 @@ class LocationPage extends StatelessWidget {
     return BlocBuilder<ProfileBloc, ProfileState>(builder: (context, state) {
       return Scaffold(
         appBar: AppBar(
-          backgroundColor: Color.fromARGB(255, 5, 53, 90),
+          backgroundColor: const Color.fromARGB(255, 5, 53, 90),
           title: RichText(
             text: const TextSpan(
               text: 'Location',
@@ -31,41 +31,50 @@ class LocationPage extends StatelessWidget {
           ),
           centerTitle: true,
         ),
-        body: Center(
-          child: state.latitude != null
-              ? Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const CircleAvatar(
-                          backgroundColor: Colors.indigoAccent,
-                          radius: 90,
-                          child: Icon(Icons.location_on, size: 50)),
-                      const SizedBox(height: 30),
-                      Text(
-                        'Latitude = ${state.latitude}',
-                        style: const TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.w500),
-                      ),
-                      const SizedBox(height: 10),
-                      Text(
-                        'Longitude = ${state.longitude}',
-                        style: const TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.w500),
-                      ),
-                      const SizedBox(height: 10),
-                      if (!kIsWeb)
-                        Text(
-                          'Address = ${state.address}',
-                          textAlign: TextAlign.center,
-                          style: const TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.w500),
+        body: SingleChildScrollView(
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                state.latitude != null
+                    ? Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            BootstrapCol(
+                              child: const CircleAvatar(
+                                  backgroundColor: Colors.indigoAccent,
+                                  radius: 90,
+                                  child: Icon(Icons.location_on, size: 50)),
+                            ),
+                            const SizedBox(height: 30),
+                            Text(
+                              'Latitude = ${state.latitude}',
+                              style: const TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.w500),
+                            ),
+                            const SizedBox(height: 10),
+                            Text(
+                              'Longitude = ${state.longitude}',
+                              style: const TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.w500),
+                            ),
+                            const SizedBox(height: 10),
+                            // if (!kIsWeb)
+                            //   Text(
+                            //     'Address = ${state.address}',
+                            //     textAlign: TextAlign.center,
+                            //     style: const TextStyle(
+                            //         fontSize: 20, fontWeight: FontWeight.w500),
+                            //   ),
+                          ],
                         ),
-                    ],
-                  ),
-                )
-              : const CircularProgressIndicator(),
+                      )
+                    : const CircularProgressIndicator(),
+              ],
+            ),
+          ),
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {

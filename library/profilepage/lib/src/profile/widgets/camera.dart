@@ -51,7 +51,7 @@ class _CameraPageState extends State<CameraPage> {
     if (controller.value.isInitialized) {
       return Scaffold(
         appBar: AppBar(
-          backgroundColor: Color.fromARGB(255, 5, 53, 90),
+          backgroundColor: const Color.fromARGB(255, 5, 53, 90),
           title: RichText(
             text: const TextSpan(
               text: 'Camera',

@@ -158,6 +158,8 @@
 // }
 
 import 'package:communicationlayer/communicationlayer.dart';
+import 'package:flutter_micro_app/flutter_micro_app.dart';
+import 'package:micro_routes/micro_routes.dart';
 import 'package:event_bus_plus/event_bus_plus.dart' as e1;
 import 'package:convertpage/convertpage.dart';
 import 'package:flutter/material.dart';
@@ -166,6 +168,7 @@ import 'package:qlevar_router/qlevar_router.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:home/home.dart';
+import 'package:url_launcher/url_launcher.dart';
 // import 'package:communicationlayer/communicationlayer.dart' as c1;
 
 class HomePage1 extends StatelessWidget {
@@ -190,6 +193,9 @@ class HomePage1 extends StatelessWidget {
           context.read<ProfileBloc>().add(GetUserNameEvent());
           SharedPreferences prefs = await SharedPreferences.getInstance();
           await prefs.setString('name', _textEditingController.text);
+          // await launchUrl(Uri.parse('https://convert-micro-app1.web.app/'),);
+          NavigatorInstance.pushNamed(Application1Routes().page1);
+          // NavigatorInstance.pushNamed('microapp2/page1');
 
           // context.pushReplacementNamed(RouteConstants.convert);
           // c1.eventBus
@@ -202,7 +208,7 @@ class HomePage1 extends StatelessWidget {
           //     _textEditingController.text,
           //   );
           // });
-          QR.to('/convert');
+          // QR.to('/convert');
         },
       );
     });

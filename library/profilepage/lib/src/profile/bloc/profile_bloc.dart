@@ -25,7 +25,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
           print(value.latitude);
           // state.latitude = value.latitude;
           // long = value.longitude;
-          getAddress(value.latitude, value.longitude);
+          // getAddress(value.latitude, value.longitude);
         }).catchError((error) {
           print(error);
         });

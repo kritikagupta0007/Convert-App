@@ -21,13 +21,13 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
-    final screenSize = MediaQuery.of(context).size;
+    // final screenSize = MediaQuery.of(context).size;
     final bloc = BlocProvider.of<ProfileBloc>(context).state;
     return BlocBuilder<ProfileBloc, ProfileState>(builder: (context, state) {
       return Scaffold(
           appBar: AppBar(
             centerTitle: true,
-            backgroundColor: Color.fromARGB(255, 5, 53, 90),
+            backgroundColor: const Color.fromARGB(255, 5, 53, 90),
             title: RichText(
               text: const TextSpan(
                 text: 'Profile',
@@ -38,106 +38,116 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
             ),
           ),
-          body: ListView(
-            shrinkWrap: true,
-            children: [
-              SizedBox(
-                  height: 300, child: SvgPicture.asset('assets/image_2.svg')),
-              Row(
-                // crossAxisAlignment: CrossAxisAlignment.end,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Padding(
-                    padding: EdgeInsets.all(5),
-                    child: CircleAvatar(
-                        radius: 20,
-                        backgroundColor: Color.fromARGB(255, 208, 204, 204),
-                        child: Icon(
-                          Icons.person_2,
-                          color: Colors.black,
-                          size: 30,
-                        )),
-                  ),
-                  RichText(
-                    text: TextSpan(
-                      text: bloc.userName.toString() != null
-                          ? 'Hello ${bloc.userName.toString()}'
-                          : 'Hello User',
-                      style: const TextStyle(
-                          color: Colors.black,
-                          fontSize: 25,
-                          fontWeight: FontWeight.bold),
+          body: SingleChildScrollView(
+            child: BootstrapContainer(
+              fluid: true,
+              // shrinkWrap: true,
+              children: [
+                SizedBox(
+                    height: 300, child: SvgPicture.asset('assets/image_2.svg')),
+                Row(
+                  // crossAxisAlignment: CrossAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.all(5),
+                      child: CircleAvatar(
+                          radius: 20,
+                          backgroundColor: Color.fromARGB(255, 208, 204, 204),
+                          child: Icon(
+                            Icons.person_2,
+                            color: Colors.black,
+                            size: 30,
+                          )),
                     ),
-                  ),
-                ],
-              ),
-              Padding(
-                padding: const EdgeInsets.all(30),
-                child: GridView(
-                  primary: false,
-                  shrinkWrap: true,
-                  scrollDirection: Axis.vertical,
-                  padding: const EdgeInsets.all(40),
-                  gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                      crossAxisSpacing: 50,
-                      mainAxisSpacing: 40,
-                      maxCrossAxisExtent: 310,
-                      childAspectRatio: 2 / 2
-                      // crossAxisCount: screenSize.width > 640 ? 3 : 2,
+                    RichText(
+                      text: TextSpan(
+                        text: bloc.userName.toString() != null
+                            ? 'Hello ${bloc.userName.toString()}'
+                            : 'Hello User',
+                        style: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold),
                       ),
-                  children: <Widget>[
-                    _buildListTile(
-                      'Location',
-                      Icons.location_on,
-                      Colors.red,
-                      Colors.blue[100],
-                      () {
-                        QR.to('/profilePage/location');
-                      },
-                    ),
-                    _buildListTile(
-                      'Camera',
-                      Icons.camera_alt,
-                      Colors.black,
-                      Colors.blue[200],
-                      () async {
-                        QR.to('/profilePage/camera');
-                      },
-                    ),
-                    _buildListTile(
-                      'Date',
-                      Icons.date_range_rounded,
-                      Colors.black,
-                      Colors.blue[300],
-                      () {
-                        QR.to('/profilePage/date');
-                      },
-                    ),
-                    _buildListTile(
-                      'Notification',
-                      Icons.notifications,
-                      Colors.black,
-                      Colors.blue[400],
-                      () {
-                        // showDialogBox("No notifications");
-                      },
-                    ),
-                    _buildListTile(
-                      'Logout',
-                      Icons.logout,
-                      Colors.black,
-                      Colors.blue[500],
-                      () async {
-                        state.userName = '';
-                        // HomePage.navigate(context: context);
-                        // QR.navigator.replaceAllWithName('/');
-                        QR.to('/');
-                      },
                     ),
                   ],
                 ),
-              ),
-            ],
+                Padding(
+                  padding: const EdgeInsets.all(30),
+                  child: GridView(
+                    primary: false,
+                    shrinkWrap: true,
+                    scrollDirection: Axis.vertical,
+                    padding: const EdgeInsets.all(40),
+                    gridDelegate:
+                        const SliverGridDelegateWithMaxCrossAxisExtent(
+                            crossAxisSpacing: 50,
+                            mainAxisSpacing: 40,
+                            maxCrossAxisExtent: 310,
+                            childAspectRatio: 2 / 2
+                            // crossAxisCount: screenSize.width > 640 ? 3 : 2,
+                            ),
+                    children: <Widget>[
+                      _buildListTile(
+                        'Location',
+                        Icons.location_on,
+                        Colors.red,
+                        Colors.blue[100],
+                        () {
+                          // QR.to('/profilePage/location');
+                          NavigatorInstance.pushNamed(
+                              Application1Routes().page3);
+                        },
+                      ),
+                      _buildListTile(
+                        'Camera',
+                        Icons.camera_alt,
+                        Colors.black,
+                        Colors.blue[200],
+                        () async {
+                          // QR.to('/profilePage/camera');
+                          NavigatorInstance.pushNamed(
+                              Application1Routes().page4);
+                        },
+                      ),
+                      _buildListTile(
+                        'Date',
+                        Icons.date_range_rounded,
+                        Colors.black,
+                        Colors.blue[300],
+                        () {
+                          // QR.to('/profilePage/date');
+                          NavigatorInstance.pushNamed(
+                              Application1Routes().page5);
+                        },
+                      ),
+                      _buildListTile(
+                        'Notification',
+                        Icons.notifications,
+                        Colors.black,
+                        Colors.blue[400],
+                        () {
+                          // showDialogBox("No notifications");
+                        },
+                      ),
+                      _buildListTile(
+                        'Logout',
+                        Icons.logout,
+                        Colors.black,
+                        Colors.blue[500],
+                        () async {
+                          state.userName = '';
+                          // HomePage.navigate(context: context);
+                          // QR.navigator.replaceAllWithName('/');
+                          QR.to('/');
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ));
     });
   }
@@ -151,7 +161,7 @@ class _ProfilePageState extends State<ProfilePage> {
   ) {
     return InkWell(
       onTap: onTap,
-      hoverColor: Color.fromARGB(255, 207, 233, 254),
+      hoverColor: const Color.fromARGB(255, 207, 233, 254),
       borderRadius: BorderRadius.circular(10),
       child: Container(
         padding: const EdgeInsets.all(10),

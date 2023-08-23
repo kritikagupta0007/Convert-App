@@ -160,9 +160,9 @@ class _ConvertPageState extends State<ConvertPage>
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30)),
               backgroundColor: Color.fromARGB(255, 79, 228, 153)),
-          child: Row(
+          child: const Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
+            children: [
               Text(
                 'Preview Conversion',
                 style: TextStyle(
