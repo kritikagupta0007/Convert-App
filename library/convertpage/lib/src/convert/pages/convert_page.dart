@@ -156,7 +156,7 @@ class _ConvertPageState extends State<ConvertPage>
       child: ElevatedButton(
           onPressed: () {},
           style: ElevatedButton.styleFrom(
-              minimumSize: Size(20, 60),
+              // minimumSize: Size(20, 60),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30)),
               backgroundColor: Color.fromARGB(255, 79, 228, 153)),
@@ -167,13 +167,14 @@ class _ConvertPageState extends State<ConvertPage>
                 'Preview Conversion',
                 style: TextStyle(
                     color: Colors.black,
-                    fontSize: kIsWeb ? 16 : 18,
+                    fontSize: 12,
+                    //  kIsWeb ? 16 : 18,
                     fontWeight: FontWeight.bold),
               ),
-              SizedBox(width: 10),
+              SizedBox(width: 8),
               Icon(
                 Icons.arrow_right_alt,
-                size: 30,
+                size: 20,
                 color: Colors.black,
               )
             ],

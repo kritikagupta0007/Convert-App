@@ -170,6 +170,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:home/home.dart';
 import 'package:url_launcher/url_launcher.dart';
 // import 'package:communicationlayer/communicationlayer.dart' as c1;
+import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
 class HomePage1 extends StatelessWidget {
   HomePage1({super.key});
@@ -213,4 +214,12 @@ class HomePage1 extends StatelessWidget {
       );
     });
   }
+}
+
+@widgetbook.UseCase(
+  name: 'HomePage',
+  type: HomePage1,
+)
+HomePage1 homePage(BuildContext context) {
+  return HomePage1();
 }

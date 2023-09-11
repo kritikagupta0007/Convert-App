@@ -169,9 +169,11 @@ class FromAndToWidget extends StatelessWidget {
             width: 35,
             child: ClipRRect(
                 child: bottomValue != null
-                    ? CircleAvatar(child: Image.network(bottomValue!.icon)
-                        // Text(bottomValue!.name[0]),
-                        )
+                    ? CircleAvatar(
+                        child:
+                            // Image.network(bottomValue!.icon)
+                            Text(bottomValue!.name[0]),
+                      )
                     // ? Image.network(bottomValue!.icon)
                     : CircleAvatar(
                         child: Text(imageURL),

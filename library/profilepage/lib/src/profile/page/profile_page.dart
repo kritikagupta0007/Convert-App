@@ -123,6 +123,17 @@ class _ProfilePageState extends State<ProfilePage> {
                         },
                       ),
                       _buildListTile(
+                        'Typescript',
+                        Icons.date_range_rounded,
+                        Colors.black,
+                        Colors.blue[300],
+                        () {
+                          // QR.to('/profilePage/date');
+                          NavigatorInstance.pushNamed(
+                              Application1Routes().page6);
+                        },
+                      ),
+                      _buildListTile(
                         'Notification',
                         Icons.notifications,
                         Colors.black,

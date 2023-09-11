@@ -18,6 +18,7 @@ class _DatePickerPageState extends State<DatePickerPage> {
   // ));
 
   String selectedDate = '';
+  // TypeScriptDatePicker datePicker = TypeScriptDatePicker();
 
   @override
   void initState() {
@@ -35,7 +36,9 @@ class _DatePickerPageState extends State<DatePickerPage> {
         final iFrameElement = html.IFrameElement()
           ..width = '100%'
           ..height = '300%'
-          ..src = 'datepicker/datepicker.html'
+          ..src =
+              // 'date_picker.ts'
+              'datepicker/datepicker.html'
           ..style.border = 'none';
 
         html.window.onMessage.listen((event) {
@@ -84,12 +87,35 @@ class _DatePickerPageState extends State<DatePickerPage> {
               child: HtmlElementView(
                 viewType: 'datepicker-html',
               ),
+              // child: Hydro.set(TypeScriptDatePicker(), forceReplace: true),
             ),
             const SizedBox(height: 20),
             Text(
               'Selected Date: $selectedDate',
               style: TextStyle(fontSize: 20),
             ),
+            const SizedBox(height: 20),
+            // GestureDetector(
+            //   onTap: () async {
+            //     // Hydro.set(TypeScriptDatePicker(), forceReplace: true);
+            //     setState(() {
+            //       datePicker = datePicker.setName('kritika');
+            //       Hydro.set(datePicker, forceReplace: true);
+            //       datePicker.update();
+            //     });
+            //     print(datePicker.name);
+            //     print('clicked');
+            //   },
+            //   child: Container(
+            //     padding: const EdgeInsets.all(10),
+            //     color: Colors.blue,
+            //     child: const Text(
+            //       'Tap to Update Name',
+            //       style: TextStyle(color: Colors.white),
+            //     ),
+            //   ),
+            // ),
+            // Text(datePicker.name),
             const SizedBox(height: 20),
           ],
         ),

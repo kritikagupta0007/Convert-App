@@ -28,6 +28,8 @@ dependencies:
   webview_flutter: ^4.2.2 
   flutter_inappwebview: ^5.7.2+3
   flutter_bootstrap: ^2.0.0
+  hydro: ^0.0.3
+
 
 dev_dependencies:
   flutter_test:

@@ -52,6 +52,7 @@ class CryptoCoinDetailAdapter extends TypeAdapter<CryptoCoinDetail> {
       mainChainName: fields[30] as String?,
       walletType: fields[31] as int?,
       addrCombineSymbol: fields[32] as String?,
+      String: null,
     );
   }
 

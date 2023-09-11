@@ -123,5 +123,10 @@ class MyApp extends MicroHostStatelessWidget {
           pageBuilder: PageBuilder(builder: (_, __) => DatePickerPage()),
           description: 'The third page of the application',
         ),
+        MicroAppPage(
+          route: '/profile/typescript',
+          pageBuilder: PageBuilder(builder: (_, __) => EncryptDecryptPage()),
+          description: 'The typescript page of the application',
+        ),
       ];
 }

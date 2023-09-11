@@ -142,6 +142,7 @@ class CryptoCoinDetail extends HiveObject {
     this.mainChainName,
     this.walletType,
     this.addrCombineSymbol,
+    required String,
     // this.rate
   });
 
@@ -183,7 +184,7 @@ class CryptoCoinDetail extends HiveObject {
         mainChainSymbol: json["mainChainSymbol"],
         mainChainName: json["mainChainName"],
         walletType: json["walletType"],
-        addrCombineSymbol: json["addrCombineSymbol"],
+        addrCombineSymbol: json["addrCombineSymbol"], String: null,
         // rate: Map.from(json["rate"])
         //     .map((k, v) => MapEntry<String, double>(k, v.toDouble())),
       );

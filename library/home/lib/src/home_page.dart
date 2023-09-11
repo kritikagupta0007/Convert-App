@@ -69,14 +69,12 @@ class _HomePageState extends State<HomePage> {
                     height: 20,
                   ),
                   // if (state.userName.toString() != null)
-                  RichText(
-                    text: TextSpan(
-                      text: widget.helloText,
-                      style: const TextStyle(
-                        color: Colors.black,
-                        fontSize: kIsWeb ? 35 : 40,
-                        fontWeight: FontWeight.bold,
-                      ),
+                  Text(
+                    widget.helloText,
+                    style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: kIsWeb ? 35 : 40,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                   const SizedBox(height: 10),
@@ -105,16 +103,14 @@ class _HomePageState extends State<HomePage> {
                         child: Row(
                           children: [
                             Flexible(
-                              child: RichText(
-                                text: TextSpan(
-                                  text: widget.btnText,
-                                  style: const TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 18,
-                                      letterSpacing: 0.3),
-                                ),
-                                overflow: TextOverflow.ellipsis,
+                              child: Text(
+                                widget.btnText,
+                                style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 18,
+                                    letterSpacing: 0.3),
                               ),
+                              // overflow: TextOverflow.ellipsis,
                             ),
                             // const SizedBox(width: 10),
                             const Icon(

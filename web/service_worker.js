@@ -20,6 +20,7 @@ self.addEventListener('install', (event) => {
           // Add URLs of assets to be cached
           './index.html',
           './datepicker/datepicker.html',
+          './typescript/typescript.html',
           './main.dart.js',
         //   '/web/firebase-messaging-sw.js',
           './assets/assets/image_1.svg',
