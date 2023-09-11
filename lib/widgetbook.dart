@@ -1,4 +1,3 @@
-import 'package:convert_app/features/presentation/convert/pages/convert_page.dart';
 import 'package:convert_app/features/presentation/home/home.dart';
 import 'package:convertpage/convertpage.dart';
 import 'package:convertpage/data/model/crypto_coin_detail.dart';
@@ -139,7 +138,7 @@ class WidgetBookApp extends StatelessWidget {
                   useCases: [
                     WidgetbookUseCase(
                       name: 'Default Style',
-                      builder: (context) => ConvertPage1(),
+                      builder: (context) => const ConvertPage(),
                     ),
                   ],
                 ),

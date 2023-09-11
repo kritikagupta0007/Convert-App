@@ -1,8 +1,7 @@
 import 'package:camera/camera.dart';
 import 'package:convert_app/core/constants/route_constants.dart';
-import 'package:convert_app/features/presentation/convert/pages/convert_page.dart';
 import 'package:convert_app/features/presentation/home/home.dart';
-
+import 'package:convertpage/convertpage.dart';
 import 'package:flutter/material.dart';
 import 'package:profilepage/profilepage.dart';
 import 'package:qlevar_router/qlevar_router.dart';
@@ -17,7 +16,7 @@ class AppRoutes {
     QRoute(
       name: RouteConstants.convert,
       path: '/convert',
-      builder: () => ConvertPage1(),
+      builder: () => ConvertPage(),
     ),
     QRoute(
       name: RouteConstants.profile,
@@ -43,6 +42,16 @@ class AppRoutes {
               }
             },
           ),
+        ),
+        QRoute(
+          name: RouteConstants.date,
+          path: '/date',
+          builder: () => DatePickerPage(),
+        ),
+        QRoute(
+          name: RouteConstants.typescript,
+          path: '/typescript',
+          builder: () => EncryptDecryptPage(),
         ),
       ],
     )

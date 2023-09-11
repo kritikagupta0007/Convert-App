@@ -3,17 +3,6 @@ part of profilepage;
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
 
-  // static Future<void> navigate({
-  //   required BuildContext context,
-  // }) async {
-  //   Navigator.push(
-  //     context,
-  //     MaterialPageRoute(builder: (context) {
-  //       return const ProfilePage();
-  //     }),
-  //   );
-  // }
-
   @override
   State<ProfilePage> createState() => _ProfilePageState();
 }
@@ -95,9 +84,9 @@ class _ProfilePageState extends State<ProfilePage> {
                         Colors.red,
                         Colors.blue[100],
                         () {
-                          // QR.to('/profilePage/location');
-                          NavigatorInstance.pushNamed(
-                              Application1Routes().page3);
+                          QR.to('/profilePage/location');
+                          // NavigatorInstance.pushNamed(
+                          //     Application1Routes().page3);
                         },
                       ),
                       _buildListTile(
@@ -106,9 +95,9 @@ class _ProfilePageState extends State<ProfilePage> {
                         Colors.black,
                         Colors.blue[200],
                         () async {
-                          // QR.to('/profilePage/camera');
-                          NavigatorInstance.pushNamed(
-                              Application1Routes().page4);
+                          QR.to('/profilePage/camera');
+                          // NavigatorInstance.pushNamed(
+                          //     Application1Routes().page4);
                         },
                       ),
                       _buildListTile(
@@ -117,20 +106,20 @@ class _ProfilePageState extends State<ProfilePage> {
                         Colors.black,
                         Colors.blue[300],
                         () {
-                          // QR.to('/profilePage/date');
-                          NavigatorInstance.pushNamed(
-                              Application1Routes().page5);
+                          QR.to('/profilePage/date');
+                          // NavigatorInstance.pushNamed(
+                          //     Application1Routes().page5);
                         },
                       ),
                       _buildListTile(
                         'Typescript',
-                        Icons.date_range_rounded,
+                        Icons.dataset_linked_outlined,
                         Colors.black,
                         Colors.blue[300],
                         () {
-                          // QR.to('/profilePage/date');
-                          NavigatorInstance.pushNamed(
-                              Application1Routes().page6);
+                          QR.to('/profilePage/typescript');
+                          // NavigatorInstance.pushNamed(
+                          //     Application1Routes().page6);
                         },
                       ),
                       _buildListTile(

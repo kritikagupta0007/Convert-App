@@ -24,11 +24,13 @@ dependencies:
   geocoding:
   shared_preferences: ^2.1.1
   equatable: ^2.0.5
+  path_provider: ^2.0.15
   flutter_svg: ^2.0.5
   webview_flutter: ^4.2.2 
   flutter_inappwebview: ^5.7.2+3
   flutter_bootstrap: ^2.0.0
-  hydro: ^0.0.3
+  universal_html:
+
 
 
 dev_dependencies:

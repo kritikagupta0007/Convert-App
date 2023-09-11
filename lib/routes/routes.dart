@@ -1,53 +1,24 @@
 import 'package:camera/camera.dart';
 import 'package:convert_app/core/constants/route_constants.dart';
-import 'package:convert_app/features/presentation/convert/pages/convert_page.dart'
-    deferred as convert;
 import 'package:convert_app/features/presentation/home/home.dart'
     deferred as home1;
 import 'package:convert_app/routes/deferred_loader.dart';
-import 'package:convertpage/convertpage.dart';
+import 'package:convertpage/convertpage.dart' deferred as convert;
 import 'package:flutter/material.dart';
 import 'package:home/home.dart' deferred as home;
 import 'package:profilepage/profilepage.dart' deferred as profile;
 import 'package:profilepage/profilepage.dart' deferred as camera;
-import 'package:profilepage/profilepage.dart' deferred as notifi;
+import 'package:profilepage/profilepage.dart' deferred as date;
 import 'package:profilepage/profilepage.dart' deferred as location;
-import 'package:profilepage/profilepage.dart';
+import 'package:profilepage/profilepage.dart' deferred as typescript;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:qlevar_router/qlevar_router.dart';
 
 class AppRoutes {
   static final routes = [
-    // QRoute(
-    //   name: RouteConstants.home,
-    //   path: '/home',
-    //   builder: () =>
-    //       BlocBuilder<ProfileBloc, ProfileState>(builder: (context, state) {
-    //     print(state.userName.toString());
-    //     return home.HomePage(
-    //       heading: 'Flutter Web App',
-    //       btnText: 'Convert Page',
-    //       helloText: state.userName.toString() != null
-    //           ? 'Hello ${state.userName.toString()}'
-    //           : 'hello',
-    //       onPressed: () async {
-    //         final TextEditingController _textEditingController =
-    //             TextEditingController();
-    //         context.read<ConvertBloc>().add(GetCoinInfoEvent());
-    //         context.read<ProfileBloc>().add(GetUserNameEvent());
-    //         SharedPreferences prefs = await SharedPreferences.getInstance();
-    //         await prefs.setString('name', _textEditingController.text);
-    //         QR.to('/convert');
-    //       },
-    //     );
-    //   }),
-    //   middleware: [
-    //     DefferedLoader(home.loadLibrary),
-    //   ],
-    // ),
     QRoute(
-      name: 'home',
+      name: RouteConstants.home,
       path: '/',
       builder: () => home1.HomePage1(),
       middleware: [
@@ -57,20 +28,10 @@ class AppRoutes {
     QRoute(
       name: RouteConstants.convert,
       path: '/convert',
-      builder: () => convert.ConvertPage1(),
+      builder: () => convert.ConvertPage(),
       middleware: [
         DefferedLoader(convert.loadLibrary),
       ],
-      // children: [
-      //   QRoute(
-      //     name: RouteConstants.profile,
-      //     path: '/profilePage',
-      //     builder: () => profile.ProfilePage(),
-      //     middleware: [
-      //       DefferedLoader(profile.loadLibrary),
-      //     ],
-      // ),
-      // ]
     ),
     QRoute(
       name: RouteConstants.profile,
@@ -108,9 +69,16 @@ class AppRoutes {
         QRoute(
             name: RouteConstants.date,
             path: '/date',
-            builder: () => notifi.DatePickerPage(),
+            builder: () => date.DatePickerPage(),
             middleware: [
-              DefferedLoader(notifi.loadLibrary),
+              DefferedLoader(date.loadLibrary),
+            ]),
+        QRoute(
+            name: RouteConstants.typescript,
+            path: '/typescript',
+            builder: () => typescript.EncryptDecryptPage(),
+            middleware: [
+              DefferedLoader(typescript.loadLibrary),
             ]),
       ],
     )

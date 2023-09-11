@@ -8,17 +8,7 @@ class DatePickerPage extends StatefulWidget {
 }
 
 class _DatePickerPageState extends State<DatePickerPage> {
-  // late html.IFrameElement _iframeElement;
-  // final WebViewController _controller = WebViewController()
-  //   ..loadFlutterAsset('web/datepicker/datepicker.html');
-
-  // ..loadRequest(Uri.dataFromString(
-  //   await rootBundle.loadString('datepicker/datepicker.html'),
-  //   mimeType: 'text/html',
-  // ));
-
   String selectedDate = '';
-  // TypeScriptDatePicker datePicker = TypeScriptDatePicker();
 
   @override
   void initState() {
@@ -57,12 +47,6 @@ class _DatePickerPageState extends State<DatePickerPage> {
     }
   }
 
-  // void handleDate(String selectedDate) {
-  //   setState(() {
-  //     this.selectedDate = selectedDate;
-  //   });
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -87,7 +71,6 @@ class _DatePickerPageState extends State<DatePickerPage> {
               child: HtmlElementView(
                 viewType: 'datepicker-html',
               ),
-              // child: Hydro.set(TypeScriptDatePicker(), forceReplace: true),
             ),
             const SizedBox(height: 20),
             Text(
@@ -95,56 +78,10 @@ class _DatePickerPageState extends State<DatePickerPage> {
               style: TextStyle(fontSize: 20),
             ),
             const SizedBox(height: 20),
-            // GestureDetector(
-            //   onTap: () async {
-            //     // Hydro.set(TypeScriptDatePicker(), forceReplace: true);
-            //     setState(() {
-            //       datePicker = datePicker.setName('kritika');
-            //       Hydro.set(datePicker, forceReplace: true);
-            //       datePicker.update();
-            //     });
-            //     print(datePicker.name);
-            //     print('clicked');
-            //   },
-            //   child: Container(
-            //     padding: const EdgeInsets.all(10),
-            //     color: Colors.blue,
-            //     child: const Text(
-            //       'Tap to Update Name',
-            //       style: TextStyle(color: Colors.white),
-            //     ),
-            //   ),
-            // ),
-            // Text(datePicker.name),
             const SizedBox(height: 20),
           ],
         ),
       ),
-
-      //  kIsWeb
-      //     ?
-      //   const SizedBox.expand(
-      //       child: HtmlElementView(
-      // viewType: 'datepicker-html',
-      // onPlatformViewCreated: (controller) {
-      //   _webViewController = controller;
-      // _webViewController?.loadUrl(
-      //     Uri.parse('web/datepicker/datepicker.html').toString());
-      // _setupCallback();
-      // },
-      // )),
     );
   }
-
-  // _setupCallback() {
-
-  //   js.context['dartCallbackHandler'] = (date) {
-  //     // Handle the selected date received from the web content
-  //     String selectedDate = date.toString();
-  //     // Do something with the selected date in Flutter
-  //     print('Selected date from Vanilla JS: $selectedDate');
-  //     // Example: Send the selected date to a method in Flutter
-  //     handleSelectedDate(selectedDate);
-  //   };
-  // }
 }

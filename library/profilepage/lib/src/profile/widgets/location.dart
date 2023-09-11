@@ -3,19 +3,6 @@ part of profilepage;
 class LocationPage extends StatelessWidget {
   const LocationPage({super.key});
 
-  // static Future<void> navigate({
-  //   required BuildContext context,
-  // }) async {
-  //   await Future.delayed(const Duration(seconds: 1), () {
-  //     Navigator.push(
-  //       context,
-  //       MaterialPageRoute(builder: (context) {
-  //         return const LocationPage();
-  //       }),
-  //     );
-  //   });
-  // }
-
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ProfileBloc, ProfileState>(builder: (context, state) {
@@ -61,13 +48,6 @@ class LocationPage extends StatelessWidget {
                                   fontSize: 20, fontWeight: FontWeight.w500),
                             ),
                             const SizedBox(height: 10),
-                            // if (!kIsWeb)
-                            //   Text(
-                            //     'Address = ${state.address}',
-                            //     textAlign: TextAlign.center,
-                            //     style: const TextStyle(
-                            //         fontSize: 20, fontWeight: FontWeight.w500),
-                            //   ),
                           ],
                         ),
                       )
@@ -80,10 +60,10 @@ class LocationPage extends StatelessWidget {
           onPressed: () {
             context.read<ProfileBloc>().add(GetLocationEvent(
                 state.latitude, state.longitude, state.address));
-            // if (kIsWeb) {
-            //   SessionStorage.saveValue('Latitide', state.latitude.toString());
-            //   SessionStorage.saveValue('Longitude', state.longitude.toString());
-            // }
+            if (kIsWeb) {
+              SessionStorage.saveValue('Latitide', state.latitude.toString());
+              SessionStorage.saveValue('Longitude', state.longitude.toString());
+            }
             print(state.address);
           },
           child: const Icon(Icons.location_on),

@@ -1,7 +1,5 @@
 library profilepage;
 
-// import 'dart:js_interop';
-
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -15,6 +13,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:communicationlayer/communicationlayer.dart';
 import 'package:flutter_bootstrap/flutter_bootstrap.dart';
+import 'package:universal_html/html.dart' as storage;
 import 'dart:io';
 import 'package:flutter/foundation.dart' show kIsWeb;
 // import 'package:webview_flutter/webview_flutter.dart';
@@ -22,8 +21,6 @@ import 'package:flutter/foundation.dart' show kIsWeb;
 import 'dart:js' as js;
 import 'dart:ui' as ui;
 import 'dart:html' as html;
-import 'package:hydro/hydro.dart';
-
 // import 'package:webview_flutter_android/webview_flutter_android.dart'
 //     if (kIsWeb) 'dart:html' as html;
 
@@ -35,4 +32,5 @@ part 'src/profile/widgets/camera.dart';
 part 'src/profile/widgets/date_picker.dart';
 part 'src/profile/widgets/encrypt_decrypt.dart';
 part 'src/profile/widgets/location.dart';
-part 'src/profile/widgets/typescript.dart';
+// part 'src/profile/widgets/typescript.dart';
+part 'src/core/storage/session_storage.dart';

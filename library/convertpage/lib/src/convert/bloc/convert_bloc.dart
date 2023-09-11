@@ -1,7 +1,5 @@
 part of convertpage;
 
-// import 'package:universal_html/html.dart' as html;
-
 class ConvertBloc extends Bloc<ConvertEvent, ConvertState> {
   ConvertBloc() : super(const ConvertState(coinInfoData: [])) {
     on<GetCoinInfoEvent>((event, emit) async {
@@ -132,27 +130,5 @@ class ConvertBloc extends Bloc<ConvertEvent, ConvertState> {
       box.add(d);
     }
     print('#### ${box.values.toList()}');
-
-    // html.window.localStorage['cryptoCoin'] = jsonEncode(data);
   }
 }
-
-// List<CryptoCoinDetail> _populatedFromList(
-  //     CryptoCoinDetail? bottomSheetValue) {
-  //   List<CryptoCoinDetail> fromList = List.from(coinInfo);
-  //   fromList.removeWhere((item) => item == bottomSheetValue);
-  //   return fromList;
-  // }
-
-
- // try {
-  //   final client =
-  //       ApiService(Dio(BaseOptions(contentType: "application/json")));
-  //   final response = await client.getPublicCoinInfo();
-
-  //   print('22 ${response.data.coinInfo!.values.toList()}');
-  //   emit(state.copyWith(
-  //       coinInfoData: response.data.coinInfo!.values.toList()));
-  // } catch (e) {
-  //   throw ('Error $e');
-  // }

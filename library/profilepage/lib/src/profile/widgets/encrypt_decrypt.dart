@@ -12,6 +12,8 @@ class _EncryptDecryptPageState extends State<EncryptDecryptPage> {
   Future<dynamic> _getCryptResult() async {
     String salt = 'salt';
     String text = 'Hello';
+
+    // JavaScript code
     // String crypt = '''
     // (salt, text) => {
     //   const textToChars = (text) => text.split("").map((c) => c.charCodeAt(0));
@@ -27,6 +29,8 @@ class _EncryptDecryptPageState extends State<EncryptDecryptPage> {
     //   return data;
     // }
     // ''';
+
+    // typrscript code
     String crypt = '''
   (salt: string, text: string): string => {
   const textToChars = (text: string): number[] => text.split("").map((c) => c.charCodeAt(0));
@@ -57,7 +61,14 @@ class _EncryptDecryptPageState extends State<EncryptDecryptPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Encrypt Page'),
+        backgroundColor: const Color.fromARGB(255, 5, 53, 90),
+        title: RichText(
+          text: const TextSpan(
+            text: 'Encrypt Page',
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
+          ),
+        ),
+        centerTitle: true,
       ),
       body: Container(
         decoration: BoxDecoration(
@@ -123,49 +134,6 @@ class _EncryptDecryptPageState extends State<EncryptDecryptPage> {
                   ),
                   const SizedBox(
                     width: 50,
-                  ),
-                  Column(
-                    children: [
-                      SizedBox(
-                        width: 200,
-                        height: 60,
-                        child: ElevatedButton(
-                          onPressed: () {},
-                          // updateDecryptText,
-                          style: ButtonStyle(
-                            backgroundColor:
-                                MaterialStateProperty.all<Color>(Colors.white),
-                            textStyle: MaterialStateProperty.all<TextStyle>(
-                              const TextStyle(
-                                  fontSize: 24, fontWeight: FontWeight.bold),
-                            ),
-                            padding:
-                                MaterialStateProperty.all<EdgeInsetsGeometry>(
-                              const EdgeInsets.symmetric(
-                                  vertical: 10, horizontal: 20),
-                            ),
-                            shape: MaterialStateProperty.all<
-                                RoundedRectangleBorder>(
-                              RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(30),
-                              ),
-                            ),
-                          ),
-                          child: const Text(
-                            'Decrypt',
-                            style: TextStyle(color: Colors.blue, fontSize: 24),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(height: 20),
-                      Text(
-                        '$DecryptResult',
-                        style: const TextStyle(
-                            fontSize: 36,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white),
-                      ),
-                    ],
                   ),
                 ],
               ),

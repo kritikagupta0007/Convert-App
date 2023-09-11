@@ -1,6 +1,6 @@
 // This is a generated file; do not edit or check into version control.
 FLUTTER_ROOT=C:\Users\kritikagupta\flutter_windows_3.3.10-stable\flutter
-FLUTTER_APPLICATION_PATH=D:\Flutter_app\convert_app\library\profilepage
+FLUTTER_APPLICATION_PATH=D:\Flutter_app\POC\convert_app\library\profilepage
 COCOAPODS_PARALLEL_CODE_SIGN=true
 FLUTTER_BUILD_DIR=build
 FLUTTER_BUILD_NAME=0.0.1

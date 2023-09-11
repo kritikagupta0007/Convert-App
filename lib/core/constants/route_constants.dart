@@ -5,4 +5,5 @@ class RouteConstants {
   static String location = 'location';
   static String camera = 'camera';
   static String date = 'date';
+  static String typescript = 'Typescript';
 }

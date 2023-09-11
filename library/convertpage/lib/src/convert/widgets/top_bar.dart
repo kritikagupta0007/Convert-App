@@ -13,8 +13,7 @@ class TopIcon extends StatelessWidget {
               // context.read<ProfileBloc>().add(GetUserNameEvent());
               // ProfilePage.navigate(context: context);
               // context.pushNamed('profile');
-              // QR.to('/profilePage');
-              NavigatorInstance.pushNamed(Application1Routes().page2);
+              QR.to('/profilePage');
             },
             child: _buildIcon(Icons.person_outlined)),
         _buildIcon(Icons.info_outline_rounded),

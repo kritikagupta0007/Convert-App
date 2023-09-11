@@ -3,19 +3,6 @@ part of convertpage;
 class ConvertPage extends StatefulWidget {
   const ConvertPage({super.key});
 
-  // static Future<void> navigate({
-  //   required BuildContext context,
-  // }) async {
-  // await Future.delayed(const Duration(seconds: 0), () {
-  //   Navigator.pushReplacement(
-  //     context,
-  //     MaterialPageRoute(builder: (context) {
-  //       return const ConvertPage();
-  //     }),
-  //   );
-  // });
-  // }
-
   @override
   State<ConvertPage> createState() => _ConvertPageState();
 }
@@ -108,10 +95,6 @@ class _ConvertPageState extends State<ConvertPage>
           }
         })),
       ),
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: () {},
-      //   child: Icon(Icons.camera),
-      // ),
     );
   }
 

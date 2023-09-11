@@ -17,17 +17,6 @@ class HomePage extends StatefulWidget {
     super.key,
   });
 
-  // static Future<void> navigate({
-  //   required BuildContext context,
-  // }) async {
-  // Navigator.pushReplacement(
-  //   context,
-  //   MaterialPageRoute(builder: (context) {
-  //     return HomePage();
-  //   }),
-  // );
-  // }
-
   @override
   State<HomePage> createState() => _HomePageState();
 }
@@ -46,11 +35,7 @@ class _HomePageState extends State<HomePage> {
         centerTitle: false,
         backgroundColor: const Color.fromARGB(255, 5, 53, 90),
       ),
-      body:
-          //BlocBuilder<ProfileBloc, ProfileState>(builder: (context, state) {
-          //   print(state.userName.toString());
-          //   return
-          Center(
+      body: Center(
         child: SingleChildScrollView(
           child: SizedBox(
             width: 360,
@@ -62,13 +47,11 @@ class _HomePageState extends State<HomePage> {
               shadowColor: Colors.grey,
               color: Colors.white,
               child: BootstrapContainer(
-                // mainAxisAlignment: MainAxisAlignment.center,
                 fluid: true,
                 children: [
                   const SizedBox(
                     height: 20,
                   ),
-                  // if (state.userName.toString() != null)
                   Text(
                     widget.helloText,
                     style: const TextStyle(
@@ -110,39 +93,13 @@ class _HomePageState extends State<HomePage> {
                                     fontSize: 18,
                                     letterSpacing: 0.3),
                               ),
-                              // overflow: TextOverflow.ellipsis,
                             ),
-                            // const SizedBox(width: 10),
                             const Icon(
                               Icons.arrow_right_alt,
                               size: 20,
-                              // color: Colors.black,
                             )
                           ],
-                        )
-                        // () async
-                        // {
-                        //   context.read<ConvertBloc>().add(GetCoinInfoEvent());
-                        //   context.read<ProfileBloc>().add(GetUserNameEvent());
-                        //   SharedPreferences prefs =
-                        //       await SharedPreferences.getInstance();
-                        //   await prefs.setString(
-                        //       'name', _textEditingController.text);
-
-                        //   // context.pushReplacementNamed(RouteConstants.convert);
-                        //   // c1.eventBus
-                        //   //     .on<GetUserNameEvent>()
-                        //   //     .listen((event) async {
-                        //   //   SharedPreferences prefs =
-                        //   //       await SharedPreferences.getInstance();
-                        //   //   await prefs.setString(
-                        //   //     'name',
-                        //   //     _textEditingController.text,
-                        //   //   );
-                        //   // });
-                        //   QR.to('/convert');
-                        // },
-                        ),
+                        )),
                   ),
                   const SizedBox(
                     height: 20,
@@ -153,7 +110,6 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
-      // })
     );
   }
 }
