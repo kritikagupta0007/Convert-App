@@ -1,0 +1,14 @@
+/* CSS code */
+.my-button {
+    background-color: #007bff; /* Blue background color */
+    color: #fff; /* White text color */
+    border: none; /* Remove border */
+    padding: 10px 20px; /* Add padding */
+    cursor: pointer; /* Show pointer cursor on hover */
+    border-radius: 5px; /* Add rounded corners */
+  }
+  
+  .my-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+  }
+  
