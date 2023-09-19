@@ -22,7 +22,8 @@ import 'package:flutter/foundation.dart' show kIsWeb;
 import 'dart:js' as js;
 import 'dart:ui' as ui;
 import 'dart:html' as html;
-import 'package:hydro/hydro.dart';
+import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
+import 'package:adaptive_components/adaptive_components.dart';
 
 // import 'package:webview_flutter_android/webview_flutter_android.dart'
 //     if (kIsWeb) 'dart:html' as html;

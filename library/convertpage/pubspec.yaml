@@ -26,6 +26,8 @@ dependencies:
   path_provider: ^2.0.15
   responsive_builder: ^0.7.0
   flutter_bootstrap: ^2.0.0
+  adaptive_breakpoints: ^0.1.6
+  adaptive_components: ^0.0.9
 
 dev_dependencies:
   flutter_test:

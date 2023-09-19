@@ -146,6 +146,14 @@ class _ConvertPageState extends State<ConvertPage>
         ));
   }
 
+  // final AdaptiveWindowType _adaptiveWindow = AdaptiveWindowType.large;
+  // BreakpointSystemEntry breakpoints = BreakpointSystemEntry(
+  //     range: RangeValues(0, 200),
+  //     adaptiveWindowType: AdaptiveWindowType.large,
+  //     columns: 12,
+  //     margin: 16.0,
+  //     gutter: 16.0);
+
   Widget _buildButton() {
     final screenSize = MediaQuery.of(context).size;
     return Padding(
@@ -153,32 +161,35 @@ class _ConvertPageState extends State<ConvertPage>
           horizontal: screenSize.width > 720
               ? screenSize.width / 3
               : screenSize.width / 15),
-      child: ElevatedButton(
-          onPressed: () {},
-          style: ElevatedButton.styleFrom(
-              // minimumSize: Size(20, 60),
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30)),
-              backgroundColor: Color.fromARGB(255, 79, 228, 153)),
-          child: const Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'Preview Conversion',
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 12,
-                    //  kIsWeb ? 16 : 18,
-                    fontWeight: FontWeight.bold),
-              ),
-              SizedBox(width: 8),
-              Icon(
-                Icons.arrow_right_alt,
-                size: 20,
-                color: Colors.black,
-              )
-            ],
-          )),
+      child: AdaptiveContainer(
+        constraints: const AdaptiveConstraints(medium: true, large: true),
+        child: ElevatedButton(
+            onPressed: () {},
+            style: ElevatedButton.styleFrom(
+                // minimumSize: Size(20, 60),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30)),
+                backgroundColor: Color.fromARGB(255, 79, 228, 153)),
+            child: const Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Preview Conversion',
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 16,
+                      //  kIsWeb ? 16 : 18,
+                      fontWeight: FontWeight.bold),
+                ),
+                SizedBox(width: 8),
+                Icon(
+                  Icons.arrow_right_alt,
+                  size: 20,
+                  color: Colors.black,
+                )
+              ],
+            )),
+      ),
     );
   }
 

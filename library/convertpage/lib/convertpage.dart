@@ -18,6 +18,8 @@ import 'package:responsive_builder/responsive_builder.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:http/http.dart' as http;
 import 'package:qlevar_router/qlevar_router.dart';
+import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
+import 'package:adaptive_components/adaptive_components.dart';
 
 part 'src/convert/bloc/convert_bloc.dart';
 part 'src/convert/bloc/convert_event.dart';

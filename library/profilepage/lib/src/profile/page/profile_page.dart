@@ -43,8 +43,20 @@ class _ProfilePageState extends State<ProfilePage> {
               fluid: true,
               // shrinkWrap: true,
               children: [
-                SizedBox(
-                    height: 300, child: SvgPicture.asset('assets/image_2.svg')),
+                AdaptiveContainer(
+                  constraints: const AdaptiveConstraints(
+                      large: true, medium: true, small: false, xsmall: false),
+                  child: SizedBox(
+                      height: 300,
+                      child: SvgPicture.asset('assets/image_2.svg')),
+                ),
+                AdaptiveContainer(
+                  constraints: const AdaptiveConstraints(
+                      large: false, medium: false, small: true, xsmall: true),
+                  child: SizedBox(
+                      height: 200,
+                      child: SvgPicture.asset('assets/image_2.svg')),
+                ),
                 Row(
                   // crossAxisAlignment: CrossAxisAlignment.end,
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -60,15 +72,42 @@ class _ProfilePageState extends State<ProfilePage> {
                             size: 30,
                           )),
                     ),
-                    RichText(
-                      text: TextSpan(
-                        text: bloc.userName.toString() != null
-                            ? 'Hello ${bloc.userName.toString()}'
-                            : 'Hello User',
-                        style: const TextStyle(
-                            color: Colors.black,
-                            fontSize: 25,
-                            fontWeight: FontWeight.bold),
+                    AdaptiveContainer(
+                      constraints: const AdaptiveConstraints(
+                          large: true,
+                          medium: true,
+                          small: false,
+                          xsmall: false),
+                      color: Colors.blueAccent,
+                      child: RichText(
+                        text: TextSpan(
+                          text: bloc.userName.toString() != null
+                              ? 'Hello ${bloc.userName.toString()}'
+                              : 'Hello User',
+                          style: const TextStyle(
+                              color: Colors.black,
+                              fontSize: 25,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ),
+                    AdaptiveContainer(
+                      constraints: const AdaptiveConstraints(
+                          large: false,
+                          medium: false,
+                          small: true,
+                          xsmall: true),
+                      color: Colors.orange,
+                      child: RichText(
+                        text: TextSpan(
+                          text: bloc.userName.toString() != null
+                              ? 'Hello ${bloc.userName.toString()}'
+                              : 'Hello User',
+                          style: const TextStyle(
+                              color: Colors.black,
+                              fontSize: 25,
+                              fontWeight: FontWeight.bold),
+                        ),
                       ),
                     ),
                   ],
